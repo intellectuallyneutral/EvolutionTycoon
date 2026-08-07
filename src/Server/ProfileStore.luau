@@ -1,3 +1,4 @@
+-- selene: allow(unused_variable, shadowing, manual_table_clone)
 --[[
 MAD STUDIO (by loleris)
 

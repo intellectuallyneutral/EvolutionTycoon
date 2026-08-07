@@ -5,7 +5,7 @@ function UpgradeMenu.new(props)
 	local self = setmetatable({}, UpgradeMenu)
 
 	local frame = Instance.new("Frame")
-	frame.Size = UDim2.new(0, 300, 0, 400)
+	frame.Size = UDim2.fromOffset(300, 400)
 	frame.BackgroundColor3 = props.theme or Color3.fromRGB(45, 120, 255)
 	frame.Position = UDim2.new(0.5, -150, 0.5, -200)
 
@@ -19,7 +19,7 @@ function UpgradeMenu.new(props)
 
 	local costLabel = Instance.new("TextLabel")
 	costLabel.Size = UDim2.new(1, 0, 0, 50)
-	costLabel.Position = UDim2.new(0, 0, 0, 100)
+	costLabel.Position = UDim2.fromOffset(0, 100)
 	costLabel.Text = "Cost: " .. tostring(props.cost)
 	costLabel.TextSize = 20
 	costLabel.BackgroundTransparency = 1

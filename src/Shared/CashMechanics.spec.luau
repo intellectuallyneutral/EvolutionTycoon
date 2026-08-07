@@ -1,3 +1,4 @@
+-- selene: allow(undefined_variable)
 local CashMechanics = require(script.Parent.CashMechanics)
 
 return function()

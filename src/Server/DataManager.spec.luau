@@ -1,3 +1,4 @@
+-- selene: allow(undefined_variable)
 local MockDataStoreService = require(game.ReplicatedStorage.Packages.MockDataStoreService)
 local DataManager = require(script.Parent.DataManager)
 

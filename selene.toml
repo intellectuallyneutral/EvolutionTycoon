@@ -1,9 +1,10 @@
 std = "roblox"
 
-
-
 [rules]
+undefined_variable = "allow"
+shadowing = "allow"
+unused_variable = "allow"
+manual_table_clone = "allow"
 divide_by_zero = "deny"
 unscoped_variables = "deny"
-shadowing = "warn"
 roblox_incorrect_roact_usage = "allow"
