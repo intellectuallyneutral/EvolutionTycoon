@@ -27,6 +27,9 @@ jobs:
       - name: Install Rokit Tools
         run: rokit install --no-trust-check
 
+      - name: Download Dependencies
+        run: wally install
+
       - name: Compile Roblox Place File
         run: rojo build -o EvolutionTycoon.rbxl
 
@@ -57,6 +60,9 @@ jobs:
 
       - name: Install Rokit Tools
         run: rokit install --no-trust-check
+
+      - name: Download Dependencies
+        run: wally install
 
       - name: Compile Roblox Place File
         run: rojo build -o EvolutionTycoon.rbxl
