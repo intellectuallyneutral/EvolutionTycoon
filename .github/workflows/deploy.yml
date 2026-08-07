@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Initialize Rokit Toolchain
-        uses: roblox-ts/setup-rokit@v1
+        uses: roblox-ts/setup-rokit@v0.1.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Initialize Rokit Toolchain
-        uses: roblox-ts/setup-rokit@v1
+        uses: roblox-ts/setup-rokit@v0.1.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
