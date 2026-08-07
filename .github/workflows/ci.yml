@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Rokit Tools
-        run: rokit install
+        run: rokit install --no-trust-check
 
       - name: Execute StyLua Formatting Check
         run: stylua --check src/
@@ -43,7 +43,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Rokit Tools
-        run: rokit install
+        run: rokit install --no-trust-check
 
       - name: Execute Luau Test Suite
         run: lune run lune/run_tests.luau
