@@ -1,0 +1,46 @@
+{
+  "name": "EvolutionTycoon",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Shared": {
+        "$path": "src/Shared"
+      },
+      "Packages": {
+        "$path": "Packages"
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "Server": {
+        "$path": "src/Server"
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "Client": {
+          "$path": "src/Client"
+        }
+      }
+    }
+  },
+  "serveAddress": "127.0.0.1",
+  "servePort": 34872,
+  "globIgnorePaths": [
+    "**/.git/**",
+    "**/wally.lock",
+    "**/rokit.toml",
+    "**/*.project.json",
+    "**/sourcemap.json",
+    "Packages/**",
+    "ServerPackages/**",
+    "DevPackages/**",
+    "**/*.spec.luau",
+    "**/test/**",
+    "**/*.story.luau",
+    "**/stories/**"
+  ]
+}

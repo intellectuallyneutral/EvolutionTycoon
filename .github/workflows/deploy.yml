@@ -1,0 +1,65 @@
+name: EvolutionTycoon Cloud Deployment
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  deploy-staging:
+    name: Build and Deploy to Staging
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      UNIVERSE_ID: "STAGING_UNIVERSE_ID"
+      PLACE_ID: "STAGING_PLACE_ID"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Rokit Toolchain
+        uses: roblox-ts/setup-rokit@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compile Roblox Place File
+        run: rojo build -o EvolutionTycoon.rbxl
+
+      - name: Publish to Roblox Open Cloud
+        run: >
+          rbxcloud experience publish 
+          -f EvolutionTycoon.rbxl 
+          -p ${{ env.PLACE_ID }} 
+          -u ${{ env.UNIVERSE_ID }} 
+          -t published 
+          -a ${{ secrets.RBXCLOUD_API_KEY }}
+
+  deploy-production:
+    name: Build and Deploy to Production
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    env:
+      UNIVERSE_ID: "PRODUCTION_UNIVERSE_ID"
+      PLACE_ID: "PRODUCTION_PLACE_ID"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Rokit Toolchain
+        uses: roblox-ts/setup-rokit@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compile Roblox Place File
+        run: rojo build -o EvolutionTycoon.rbxl
+
+      - name: Publish to Roblox Open Cloud
+        run: >
+          rbxcloud experience publish 
+          -f EvolutionTycoon.rbxl 
+          -p ${{ env.PLACE_ID }} 
+          -u ${{ env.UNIVERSE_ID }} 
+          -t published 
+          -a ${{ secrets.RBXCLOUD_API_KEY }}

@@ -1,0 +1,16 @@
+[package]
+name = "sparksdigital/evolution-tycoon"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+Knit = "sleitnick/knit@1.7.0"
+Signal = "sleitnick/signal@2.0.2"
+TestEZ = "roblox/testez@0.4.1"
+MockDataStoreService = "buildthomas/mockdatastoreservice@1.0.3"
+UI_Labs = "pepeeltoro41/ui-labs@2.4.2"
+
+[server-dependencies]
+
+[dev-dependencies]

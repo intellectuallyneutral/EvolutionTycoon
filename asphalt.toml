@@ -1,0 +1,30 @@
+#:schema https://raw.githubusercontent.com/jackTabsCode/asphalt/refs/heads/main/schema.json
+
+[creator]
+# Define the entity under which the assets will be uploaded and owned.
+# Since we might not have a group, we will use a user type, but placeholder for now
+type = "user"
+
+[codegen]
+# Optimize generation exclusively for standard Luau
+typescript = false
+# Nested tables provide superior Luau language server autocomplete
+style = "nested"
+# Strip file extensions (e.g., .png) from the generated Luau keys for cleaner code
+strip_extensions = true
+# Output raw asset strings rather than wrapped Content data types
+content = false
+
+[inputs.Visuals]
+# Glob pattern capturing all PNG and SVG files recursively in the local Windows 11 filesystem
+path = "assets/visuals/**/*"
+# Target directory within the Rojo src tree to output the code
+output_path = "src/Shared/Generated"
+output_basename = "AssetVisuals"
+# Enable alpha bleeding to prevent edge artifacts when scaled in Roblox
+bleed = true
+
+[inputs.Audio]
+path = "assets/audio/**/*.ogg"
+output_path = "src/Shared/Generated"
+output_basename = "AssetAudio"

@@ -1,0 +1,9 @@
+/Packages
+/DevPackages
+/node_modules
+wally.lock
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+.DS_Store

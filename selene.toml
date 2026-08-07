@@ -1,0 +1,11 @@
+std = "roblox+testez"
+
+[config]
+empty_if = "allow"
+multiple_statements = "deny"
+
+[rules]
+divide_by_zero = "error"
+unscoped_variables = "error"
+shadowing = "warn"
+roblox_incorrect_roact_usage = "allow"

@@ -1,0 +1,43 @@
+name: EvolutionTycoon Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verify-style-and-lint:
+    name: StyLua and Selene Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Rokit Toolchain
+        uses: roblox-ts/setup-rokit@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Execute StyLua Formatting Check
+        run: stylua --check src/
+
+      - name: Execute Selene Linting
+        run: selene src/
+
+  headless-testing:
+    name: Lune Headless Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Rokit Toolchain
+        uses: roblox-ts/setup-rokit@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Execute Luau Test Suite
+        run: lune run lune/run_tests.luau
