@@ -4,6 +4,7 @@
 # Define the entity under which the assets will be uploaded and owned.
 # Since we might not have a group, we will use a user type, but placeholder for now
 type = "user"
+id = 1
 
 [codegen]
 # Optimize generation exclusively for standard Luau

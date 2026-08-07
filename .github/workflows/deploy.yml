@@ -13,8 +13,8 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
-      UNIVERSE_ID: "STAGING_UNIVERSE_ID"
-      PLACE_ID: "STAGING_PLACE_ID"
+      UNIVERSE_ID: "10638650102"
+      PLACE_ID: "86292260054217"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -41,8 +41,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     env:
-      UNIVERSE_ID: "PRODUCTION_UNIVERSE_ID"
-      PLACE_ID: "PRODUCTION_PLACE_ID"
+      UNIVERSE_ID: "10638650102"
+      PLACE_ID: "86292260054217"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4

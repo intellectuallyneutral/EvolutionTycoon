@@ -1,11 +1,9 @@
-std = "roblox+testez"
+std = "roblox"
 
-[config]
-empty_if = "allow"
-multiple_statements = "deny"
+
 
 [rules]
-divide_by_zero = "error"
-unscoped_variables = "error"
+divide_by_zero = "deny"
+unscoped_variables = "deny"
 shadowing = "warn"
 roblox_incorrect_roact_usage = "allow"

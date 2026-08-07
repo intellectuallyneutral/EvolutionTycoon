@@ -3,12 +3,9 @@ pre-commit:
   commands:
     format:
       glob: "*.{lua,luau}"
-      runner: pwsh -NoProfile -NonInteractive -Command
-      run: stylua --quiet --check {staged_files}
+      run: stylua --check {staged_files}
     lint:
       glob: "*.{lua,luau}"
-      runner: pwsh -NoProfile -NonInteractive -Command
-      run: selene --quiet {staged_files}
+      run: selene {staged_files}
     asphalt-verify:
-      runner: pwsh -NoProfile -NonInteractive -Command
-      run: & "$env:USERPROFILE\.rokit\bin\asphalt.exe" sync --dry-run
+      run: asphalt sync
