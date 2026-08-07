@@ -24,6 +24,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install Rokit Tools
+        run: rokit install
+
       - name: Compile Roblox Place File
         run: rojo build -o EvolutionTycoon.rbxl
 
@@ -51,6 +54,9 @@ jobs:
         uses: roblox-ts/setup-rokit@v0.1.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Rokit Tools
+        run: rokit install
 
       - name: Compile Roblox Place File
         run: rojo build -o EvolutionTycoon.rbxl
