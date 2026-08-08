@@ -58,9 +58,7 @@ jobs:
         run: wally install
 
       - name: Generate Sourcemap
-        run: |
-          rm -f .gitignore
-          rojo sourcemap default.project.json -o sourcemap.json
+        run: rojo sourcemap default.project.json -o sourcemap.json
 
       - name: Compile Test Place
         run: rojo build -o EvolutionTest.rbxl
