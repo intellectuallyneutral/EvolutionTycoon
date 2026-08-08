@@ -57,5 +57,8 @@ jobs:
       - name: Generate Sourcemap
         run: rojo sourcemap default.project.json -o sourcemap.json
 
+      - name: Compile Test Place
+        run: rojo build -o EvolutionTest.rbxl
+
       - name: Execute Luau Test Suite
         run: lune run lune/run_tests.luau
