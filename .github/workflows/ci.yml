@@ -69,6 +69,19 @@ jobs:
           ls -la Packages >> test.log
           echo "=== Rojo Output ===" >> test.log
           cat rojo.log >> test.log
+          echo "=== RBXL Contents ===" >> test.log
+          cat << 'EOF' > print_rbxl.luau
+          local fs = require("@lune/fs")
+          local roblox = require("@lune/roblox")
+          local p = roblox.deserializePlace(fs.readFile("EvolutionTest.rbxl"))
+          local pkgs = p:GetService("ReplicatedStorage"):FindFirstChild("Packages")
+          if pkgs then
+            for _, c in ipairs(pkgs:GetChildren()) do print("CHILD:", c.Name, c.ClassName) end
+          else
+            print("NO PACKAGES FOLDER!")
+          end
+          EOF
+          lune run print_rbxl.luau >> test.log 2>&1
           echo "=== Lune Execution ===" >> test.log
           lune run lune/run_tests.luau >> test.log 2>&1
           
