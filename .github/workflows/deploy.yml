@@ -37,7 +37,7 @@ jobs:
         run: >
           rbxcloud experience publish 
           -f EvolutionTycoon.rbxl 
-          -p ${{ env.PLACE_ID }} 
+          -i ${{ env.PLACE_ID }} 
           -u ${{ env.UNIVERSE_ID }} 
           -t published 
           -a ${{ secrets.RBXCLOUD_API_KEY }}
@@ -71,7 +71,7 @@ jobs:
         run: >
           rbxcloud experience publish 
           -f EvolutionTycoon.rbxl 
-          -p ${{ env.PLACE_ID }} 
+          -i ${{ env.PLACE_ID }} 
           -u ${{ env.UNIVERSE_ID }} 
           -t published 
           -a ${{ secrets.RBXCLOUD_API_KEY }}
