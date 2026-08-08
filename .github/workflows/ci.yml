@@ -58,38 +58,13 @@ jobs:
         run: wally install
 
       - name: Generate Sourcemap
-        run: rojo sourcemap default.project.json -o sourcemap.json
+        run: |
+          rm -f .gitignore
+          rojo sourcemap default.project.json -o sourcemap.json
 
       - name: Compile Test Place
-        run: rojo build -o EvolutionTest.rbxl > rojo.log 2>&1
+        run: rojo build -o EvolutionTest.rbxl
 
       - name: Execute Luau Test Suite
         run: |
-          echo "=== Packages Directory ===" > test.log
-          ls -la Packages >> test.log
-          echo "=== Rojo Output ===" >> test.log
-          cat rojo.log >> test.log
-          echo "=== RBXL Contents ===" >> test.log
-          cat << 'EOF' > print_rbxl.luau
-          local fs = require("@lune/fs")
-          local roblox = require("@lune/roblox")
-          local p = roblox.deserializePlace(fs.readFile("EvolutionTest.rbxl"))
-          local pkgs = p:GetService("ReplicatedStorage"):FindFirstChild("Packages")
-          if pkgs then
-            for _, c in ipairs(pkgs:GetChildren()) do print("CHILD:", c.Name, c.ClassName) end
-          else
-            print("NO PACKAGES FOLDER!")
-          end
-          EOF
-          lune run print_rbxl.luau >> test.log 2>&1
-          echo "=== Lune Execution ===" >> test.log
-          lune run lune/run_tests.luau >> test.log 2>&1
-          
-      - name: Report Failure
-        if: failure()
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh issue create --title "CI Failure Log" --body "\`\`\`text
-          $(cat test.log)
-          \`\`\`"
+          lune run lune/run_tests.luau

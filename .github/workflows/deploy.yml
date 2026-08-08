@@ -31,7 +31,9 @@ jobs:
         run: wally install
 
       - name: Compile Roblox Place File
-        run: rojo build -o EvolutionTycoon.rbxl
+        run: |
+          rm -f .gitignore
+          rojo build -o EvolutionTycoon.rbxl
 
       - name: Publish to Roblox Open Cloud
         run: >
@@ -65,7 +67,9 @@ jobs:
         run: wally install
 
       - name: Compile Roblox Place File
-        run: rojo build -o EvolutionTycoon.rbxl
+        run: |
+          rm -f .gitignore
+          rojo build -o EvolutionTycoon.rbxl
 
       - name: Publish to Roblox Open Cloud
         run: >
