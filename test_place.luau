@@ -1,0 +1,1 @@
+local fs = require("@lune/fs"); local roblox = require("@lune/roblox"); local p = roblox.deserializePlace(fs.readFile("EvolutionTest.rbxl")); local pkgs = p:GetService("ReplicatedStorage"):FindFirstChild("Packages"); for _, c in ipairs(pkgs:GetChildren()) do print(c.Name) end

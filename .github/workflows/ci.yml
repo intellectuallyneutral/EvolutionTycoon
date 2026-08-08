@@ -61,11 +61,16 @@ jobs:
         run: rojo sourcemap default.project.json -o sourcemap.json
 
       - name: Compile Test Place
-        run: rojo build -o EvolutionTest.rbxl
+        run: rojo build -o EvolutionTest.rbxl > rojo.log 2>&1
 
       - name: Execute Luau Test Suite
         run: |
-          lune run lune/run_tests.luau > test.log 2>&1
+          echo "=== Packages Directory ===" > test.log
+          ls -la Packages >> test.log
+          echo "=== Rojo Output ===" >> test.log
+          cat rojo.log >> test.log
+          echo "=== Lune Execution ===" >> test.log
+          lune run lune/run_tests.luau >> test.log 2>&1
           
       - name: Report Failure
         if: failure()
