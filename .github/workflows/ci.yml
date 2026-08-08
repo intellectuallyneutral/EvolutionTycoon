@@ -61,4 +61,9 @@ jobs:
         run: rojo build -o EvolutionTest.rbxl
 
       - name: Execute Luau Test Suite
-        run: lune run lune/run_tests.luau
+        run: |
+          echo "### Test Execution Logs" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`text" >> $GITHUB_STEP_SUMMARY
+          lune run lune/run_tests.luau 2>&1 | tee -a $GITHUB_STEP_SUMMARY; exit_code=${PIPESTATUS[0]}
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          exit $exit_code
