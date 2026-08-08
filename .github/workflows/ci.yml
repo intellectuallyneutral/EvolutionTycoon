@@ -27,6 +27,9 @@ jobs:
       - name: Download Dependencies
         run: wally install
 
+      - name: Generate Sourcemap
+        run: rojo sourcemap default.project.json -o sourcemap.json
+
       - name: Execute StyLua Formatting Check
         run: stylua --check src/
 
@@ -50,6 +53,9 @@ jobs:
 
       - name: Download Dependencies
         run: wally install
+
+      - name: Generate Sourcemap
+        run: rojo sourcemap default.project.json -o sourcemap.json
 
       - name: Execute Luau Test Suite
         run: lune run lune/run_tests.luau
