@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  issues: write
+
 jobs:
   verify-style-and-lint:
     name: StyLua and Selene Verification
@@ -62,8 +65,13 @@ jobs:
 
       - name: Execute Luau Test Suite
         run: |
-          echo "### Test Execution Logs" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`text" >> $GITHUB_STEP_SUMMARY
-          lune run lune/run_tests.luau 2>&1 | tee -a $GITHUB_STEP_SUMMARY; exit_code=${PIPESTATUS[0]}
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          exit $exit_code
+          lune run lune/run_tests.luau > test.log 2>&1
+          
+      - name: Report Failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create --title "CI Failure Log" --body "\`\`\`text
+          $(cat test.log)
+          \`\`\`"
